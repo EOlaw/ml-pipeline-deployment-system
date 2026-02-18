@@ -1,0 +1,515 @@
+2026-02-18 16:31:26 | INFO     | __main__                            | ============================================================
+2026-02-18 16:31:26 | INFO     | __main__                            |   ML PIPELINE — START
+2026-02-18 16:31:26 | INFO     | __main__                            | ============================================================
+2026-02-18 16:31:26 | INFO     | __main__                            | STEP 1 — Data Ingestion
+2026-02-18 16:31:26 | INFO     | src.data.ingestion                  | Starting data ingestion  [source=synthetic]
+2026-02-18 16:31:26 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=2,000]
+2026-02-18 16:31:26 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (2000, 9), default_rate=44.30%
+2026-02-18 16:31:26 | INFO     | src.data.ingestion                  | Raw data saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/data/raw/raw_data.csv
+2026-02-18 16:31:26 | INFO     | src.data.ingestion                  | Split — train=1,600  test=400  pos_rate=44.31%
+2026-02-18 16:31:26 | INFO     | src.data.ingestion                  | Data ingestion completed successfully.
+2026-02-18 16:31:26 | INFO     | src.utils                           | [timer] data_ingestion completed in 10.30ms
+2026-02-18 16:31:26 | INFO     | __main__                            | STEP 2 — Data Validation
+2026-02-18 16:31:26 | INFO     | src.data.validation                 | Validating data  [1,600 rows × 9 cols]
+2026-02-18 16:31:26 | INFO     | src.data.validation                 | Validation passed.
+2026-02-18 16:31:26 | INFO     | __main__                            | Validation passed — 0 warning(s), 0 error(s)
+2026-02-18 16:31:26 | INFO     | src.utils                           | [timer] data_validation completed in 2.50ms
+2026-02-18 16:31:26 | INFO     | __main__                            | STEP 3 — Feature Engineering
+2026-02-18 16:31:26 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:31:26 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:31:26 | INFO     | __main__                            | Features: 8 raw ➜ 14 engineered
+2026-02-18 16:31:26 | INFO     | src.utils                           | [timer] feature_engineering completed in 3.58ms
+2026-02-18 16:31:26 | INFO     | __main__                            | STEP 4 — Data Preprocessing
+2026-02-18 16:31:26 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:31:26 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts'], categorical=['employment_type'], passthrough=['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:31:26 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (1600, 15), test shape:  (400, 15)
+2026-02-18 16:31:26 | INFO     | src.data.preprocessing              | Preprocessor saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:31:26 | INFO     | __main__                            | Final feature matrix: (1600, 15)
+2026-02-18 16:31:26 | INFO     | src.utils                           | [timer] preprocessing completed in 12.03ms
+2026-02-18 16:31:26 | INFO     | __main__                            | STEP 5 — Model Training (GridSearchCV + Cross-Validation)
+2026-02-18 16:31:26 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:31:26 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:31:27 | INFO     | src.utils                           | [timer] model_training completed in 1440.02ms
+2026-02-18 16:31:59 | INFO     | __main__                            | ============================================================
+2026-02-18 16:31:59 | INFO     | __main__                            |   ML PIPELINE — START
+2026-02-18 16:31:59 | INFO     | __main__                            | ============================================================
+2026-02-18 16:31:59 | INFO     | __main__                            | STEP 1 — Data Ingestion
+2026-02-18 16:31:59 | INFO     | src.data.ingestion                  | Starting data ingestion  [source=synthetic]
+2026-02-18 16:31:59 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=2,000]
+2026-02-18 16:31:59 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (2000, 9), default_rate=44.30%
+2026-02-18 16:31:59 | INFO     | src.data.ingestion                  | Raw data saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/data/raw/raw_data.csv
+2026-02-18 16:31:59 | INFO     | src.data.ingestion                  | Split — train=1,600  test=400  pos_rate=44.31%
+2026-02-18 16:31:59 | INFO     | src.data.ingestion                  | Data ingestion completed successfully.
+2026-02-18 16:31:59 | INFO     | src.utils                           | [timer] data_ingestion completed in 5.49ms
+2026-02-18 16:31:59 | INFO     | __main__                            | STEP 2 — Data Validation
+2026-02-18 16:31:59 | INFO     | src.data.validation                 | Validating data  [1,600 rows × 9 cols]
+2026-02-18 16:31:59 | INFO     | src.data.validation                 | Validation passed.
+2026-02-18 16:31:59 | INFO     | __main__                            | Validation passed — 0 warning(s), 0 error(s)
+2026-02-18 16:31:59 | INFO     | src.utils                           | [timer] data_validation completed in 1.38ms
+2026-02-18 16:31:59 | INFO     | __main__                            | STEP 3 — Feature Engineering
+2026-02-18 16:31:59 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:31:59 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:31:59 | INFO     | __main__                            | Features: 8 raw ➜ 14 engineered
+2026-02-18 16:31:59 | INFO     | src.utils                           | [timer] feature_engineering completed in 2.39ms
+2026-02-18 16:31:59 | INFO     | __main__                            | STEP 4 — Data Preprocessing
+2026-02-18 16:31:59 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:31:59 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:31:59 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (1600, 21), test shape:  (400, 21)
+2026-02-18 16:31:59 | INFO     | src.data.preprocessing              | Preprocessor saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:31:59 | INFO     | __main__                            | Final feature matrix: (1600, 21)
+2026-02-18 16:31:59 | INFO     | src.utils                           | [timer] preprocessing completed in 7.94ms
+2026-02-18 16:31:59 | INFO     | __main__                            | STEP 5 — Model Training (GridSearchCV + Cross-Validation)
+2026-02-18 16:31:59 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:31:59 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:32:04 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.4794 (std=0.0431) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 200}
+2026-02-18 16:32:04 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:32:04 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5542 (std=0.0145) | best_params={'C': 1.0, 'penalty': 'l2'}
+2026-02-18 16:32:04 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5542)
+2026-02-18 16:32:04 | INFO     | __main__                            | 
+  Cross-Validation Comparison:
+2026-02-18 16:32:04 | INFO     | __main__                            | 
+        model_name  cv_f1_mean  cv_f1_std                                                                           best_params
+LogisticRegression    0.554163   0.014457                                                           {'C': 1.0, 'penalty': 'l2'}
+      RandomForest    0.479434   0.043062 {'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 200}
+2026-02-18 16:32:04 | INFO     | src.utils                           | [timer] model_training completed in 4547.28ms
+2026-02-18 16:32:04 | INFO     | __main__                            | STEP 6 — Model Evaluation on Test Set
+2026-02-18 16:32:04 | INFO     | src.models.evaluate                 | Evaluating model: LogisticRegression  [400 samples]
+2026-02-18 16:32:04 | INFO     | src.models.evaluate                 | LogisticRegression results — accuracy=0.6000  precision=0.6092  recall=0.6000  f1=0.6012  roc_auc=0.6489
+2026-02-18 16:32:04 | INFO     | src.models.evaluate                 | Evaluating model: RandomForest  [400 samples]
+2026-02-18 16:32:04 | INFO     | src.models.evaluate                 | RandomForest results — accuracy=0.6000  precision=0.5954  recall=0.6000  f1=0.5952  roc_auc=0.6091
+2026-02-18 16:32:04 | INFO     | __main__                            | Best test-set model: LogisticRegression  F1=0.6012  ROC-AUC=0.6489
+2026-02-18 16:32:04 | INFO     | src.utils                           | [timer] model_evaluation completed in 30.96ms
+2026-02-18 16:32:04 | INFO     | __main__                            | STEP 7 — Saving Best Model to Registry
+2026-02-18 16:32:04 | INFO     | src.models.registry                 | Model artifact saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:32:04 | INFO     | src.models.registry                 | Metadata written ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/metadata.json
+2026-02-18 16:32:04 | INFO     | src.models.registry                 | Model registered — version=v1, name=LogisticRegression, test_f1=0.6012
+2026-02-18 16:32:04 | INFO     | __main__                            | Model artifact ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:32:04 | INFO     | src.utils                           | [timer] model_registry completed in 0.88ms
+2026-02-18 16:32:04 | INFO     | __main__                            | STEP 8 — AWS Deployment Simulation
+2026-02-18 16:32:04 | INFO     | src.models.registry                 | [AWS SIMULATION] Would upload model to s3://ml-pipeline-models/models/model_v1.pkl
+2026-02-18 16:32:04 | INFO     | __main__                            | [AWS SIMULATION] Would deploy Flask API on EC2 t3.medium behind an ALB at port 5000
+2026-02-18 16:32:04 | INFO     | __main__                            | [AWS SIMULATION] Would ship logs to CloudWatch group: /ml-pipeline/predictions
+2026-02-18 16:32:04 | INFO     | __main__                            | ============================================================
+2026-02-18 16:32:04 | INFO     | __main__                            |   ML PIPELINE — COMPLETE
+2026-02-18 16:32:04 | INFO     | __main__                            | ============================================================
+2026-02-18 16:32:04 | INFO     | __main__                            |   Best Model     : LogisticRegression
+2026-02-18 16:32:04 | INFO     | __main__                            |   Accuracy       : 0.6000
+2026-02-18 16:32:04 | INFO     | __main__                            |   Precision      : 0.6092
+2026-02-18 16:32:04 | INFO     | __main__                            |   Recall         : 0.6000
+2026-02-18 16:32:04 | INFO     | __main__                            |   F1-score       : 0.6012
+2026-02-18 16:32:04 | INFO     | __main__                            |   ROC-AUC        : 0.6489
+2026-02-18 16:32:04 | INFO     | __main__                            |   Model saved at : /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:32:04 | INFO     | __main__                            | ============================================================
+2026-02-18 16:32:04 | INFO     | __main__                            |   Next step: python -m src.api.app   (or: docker compose up)
+2026-02-18 16:32:04 | INFO     | __main__                            | ============================================================
+2026-02-18 16:53:51 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=600]
+2026-02-18 16:53:51 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (600, 9), default_rate=44.50%
+2026-02-18 16:53:51 | INFO     | src.data.ingestion                  | Split — train=480  test=120  pos_rate=44.58%
+2026-02-18 16:53:51 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:51 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:51 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:53:51 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:53:51 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (480, 21), test shape:  (120, 21)
+2026-02-18 16:53:51 | INFO     | src.data.preprocessing              | Preprocessor saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:53:51 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:53:51 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:53:54 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.4612 (std=0.0466) | best_params={'max_depth': None, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 100}
+2026-02-18 16:53:54 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:53:54 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5109 (std=0.0511) | best_params={'C': 10.0}
+2026-02-18 16:53:54 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5109)
+2026-02-18 16:53:54 | INFO     | src.models.evaluate                 | Evaluating model: model  [120 samples]
+2026-02-18 16:53:54 | INFO     | src.models.evaluate                 | model results — accuracy=0.5583  precision=0.5543  recall=0.5583  f1=0.5553  roc_auc=0.5562
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model artifact saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Metadata written ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/metadata.json
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model registered — version=v1, name=LogisticRegression, test_f1=0.5553
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:53:54 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=3.42ms  total_requests=1
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:53:54 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=2.58ms  total_requests=2
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:53:54 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=2.23ms  total_requests=3
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:53:54 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=2.20ms  total_requests=4
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:53:54 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=2.76ms  total_requests=5
+2026-02-18 16:53:54 | WARNING  | src.monitoring.performance          | DRIFT ALERT: positive_rate shifted by 30.00% (current=0.00%, reference=30.00%)
+2026-02-18 16:53:54 | WARNING  | src.monitoring.performance          | DRIFT ALERT: positive_rate shifted by 30.00% (current=0.00%, reference=30.00%)
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Metadata loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/metadata.json
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:53:54 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:53:54 | INFO     | src.models.registry                 | Metadata loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/metadata.json
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Split — train=160  test=40  pos_rate=48.75%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Split — train=160  test=40  pos_rate=48.75%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Split — train=160  test=40  pos_rate=48.75%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Split — train=160  test=40  pos_rate=48.75%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Raw data saved ➜ /private/var/folders/_w/7d2ym6213tn9xpxkkm2nrywr0000gn/T/pytest-of-eolaw/pytest-0/test_save_and_reload0/test_raw.csv
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Loading CSV  [/private/var/folders/_w/7d2ym6213tn9xpxkkm2nrywr0000gn/T/pytest-of-eolaw/pytest-0/test_load_from_csv0/sample.csv]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Loaded 200 rows × 9 columns
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=300]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (300, 9), default_rate=44.33%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Split — train=240  test=60  pos_rate=44.17%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=100]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (100, 9), default_rate=44.00%
+2026-02-18 16:53:54 | INFO     | src.data.validation                 | Validating data  [100 rows × 9 cols]
+2026-02-18 16:53:54 | INFO     | src.data.validation                 | Validation passed.
+2026-02-18 16:53:54 | INFO     | src.data.validation                 | Validating data  [1 rows × 2 cols]
+2026-02-18 16:53:54 | ERROR    | src.data.validation                 | Validation failed — 1 error(s)
+2026-02-18 16:53:54 | ERROR    | src.data.validation                 |   ERROR   | Missing required columns: ['age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'employment_type']
+2026-02-18 16:53:54 | WARNING  | src.data.validation                 |   WARNING | Severe class imbalance: positive_rate=0.00%. Consider SMOTE, class_weight='balanced', or resampling.
+2026-02-18 16:53:54 | INFO     | src.data.validation                 | Validating data  [240 rows × 8 cols]
+2026-02-18 16:53:54 | INFO     | src.data.validation                 | Validation passed.
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (240, 21), test shape:  (60, 21)
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (240, 21), test shape:  (60, 21)
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (240, 21), test shape:  (60, 21)
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor saved ➜ /private/var/folders/_w/7d2ym6213tn9xpxkkm2nrywr0000gn/T/pytest-of-eolaw/pytest-0/test_save_and_load0/preprocessor_test.pkl
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /private/var/folders/_w/7d2ym6213tn9xpxkkm2nrywr0000gn/T/pytest-of-eolaw/pytest-0/test_save_and_load0/preprocessor_test.pkl
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=500]
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (500, 9), default_rate=41.40%
+2026-02-18 16:53:54 | INFO     | src.data.ingestion                  | Split — train=400  test=100  pos_rate=41.50%
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:53:54 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:53:54 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (400, 21), test shape:  (100, 21)
+2026-02-18 16:53:54 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:53:54 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:53:56 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:53:56 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:53:56 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:53:56 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:53:56 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:53:56 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:53:57 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:53:57 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:53:57 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:53:57 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:53:57 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:53:57 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:53:59 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:53:59 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:53:59 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:53:59 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:53:59 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:53:59 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:01 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:01 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:01 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:01 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:01 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:01 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:03 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:03 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:03 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:03 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:03 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:03 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:05 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:05 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:05 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:05 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:05 | INFO     | src.models.evaluate                 | Evaluating model: model  [100 samples]
+2026-02-18 16:54:05 | INFO     | src.models.evaluate                 | model results — accuracy=0.5800  precision=0.6077  recall=0.5800  f1=0.5824  roc_auc=0.6618
+2026-02-18 16:54:05 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:05 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:06 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:06 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:06 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:06 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:06 | INFO     | src.models.evaluate                 | Evaluating model: model  [100 samples]
+2026-02-18 16:54:06 | INFO     | src.models.evaluate                 | model results — accuracy=0.5800  precision=0.6077  recall=0.5800  f1=0.5824  roc_auc=0.6618
+2026-02-18 16:54:06 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:06 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:08 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:08 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:08 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:08 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:08 | INFO     | src.models.evaluate                 | Evaluating model: model  [100 samples]
+2026-02-18 16:54:08 | INFO     | src.models.evaluate                 | model results — accuracy=0.5800  precision=0.6077  recall=0.5800  f1=0.5824  roc_auc=0.6618
+2026-02-18 16:54:08 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:08 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:10 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:10 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:10 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:10 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:10 | INFO     | src.models.evaluate                 | Evaluating model: LogisticRegression  [100 samples]
+2026-02-18 16:54:10 | INFO     | src.models.evaluate                 | LogisticRegression results — accuracy=0.5800  precision=0.6077  recall=0.5800  f1=0.5824  roc_auc=0.6618
+2026-02-18 16:54:10 | INFO     | src.models.evaluate                 | Evaluating model: RandomForest  [100 samples]
+2026-02-18 16:54:10 | INFO     | src.models.evaluate                 | RandomForest results — accuracy=0.5700  precision=0.5653  recall=0.5700  f1=0.5672  roc_auc=0.5577
+2026-02-18 16:54:30 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=600]
+2026-02-18 16:54:30 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (600, 9), default_rate=44.50%
+2026-02-18 16:54:30 | INFO     | src.data.ingestion                  | Split — train=480  test=120  pos_rate=44.58%
+2026-02-18 16:54:30 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:30 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:30 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:54:30 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:54:30 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (480, 21), test shape:  (120, 21)
+2026-02-18 16:54:30 | INFO     | src.data.preprocessing              | Preprocessor saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:54:30 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:30 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:34 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.4612 (std=0.0466) | best_params={'max_depth': None, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 100}
+2026-02-18 16:54:34 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:34 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5109 (std=0.0511) | best_params={'C': 10.0}
+2026-02-18 16:54:34 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5109)
+2026-02-18 16:54:34 | INFO     | src.models.evaluate                 | Evaluating model: model  [120 samples]
+2026-02-18 16:54:34 | INFO     | src.models.evaluate                 | model results — accuracy=0.5583  precision=0.5543  recall=0.5583  f1=0.5553  roc_auc=0.5562
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model artifact saved ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Metadata written ➜ /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/metadata.json
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model registered — version=v1, name=LogisticRegression, test_f1=0.5553
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:54:34 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=4.51ms  total_requests=1
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:54:34 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=2.78ms  total_requests=2
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:54:34 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=2.99ms  total_requests=3
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:54:34 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=2.67ms  total_requests=4
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:54:34 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3906  latency=3.42ms  total_requests=5
+2026-02-18 16:54:34 | WARNING  | src.monitoring.performance          | DRIFT ALERT: positive_rate shifted by 30.00% (current=0.00%, reference=30.00%)
+2026-02-18 16:54:34 | WARNING  | src.monitoring.performance          | DRIFT ALERT: positive_rate shifted by 30.00% (current=0.00%, reference=30.00%)
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Metadata loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/metadata.json
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 16:54:34 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 16:54:34 | INFO     | src.models.registry                 | Metadata loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/metadata.json
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Split — train=160  test=40  pos_rate=48.75%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Split — train=160  test=40  pos_rate=48.75%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Split — train=160  test=40  pos_rate=48.75%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Split — train=160  test=40  pos_rate=48.75%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Raw data saved ➜ /private/var/folders/_w/7d2ym6213tn9xpxkkm2nrywr0000gn/T/pytest-of-eolaw/pytest-1/test_save_and_reload0/test_raw.csv
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=200]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (200, 9), default_rate=48.50%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Loading CSV  [/private/var/folders/_w/7d2ym6213tn9xpxkkm2nrywr0000gn/T/pytest-of-eolaw/pytest-1/test_load_from_csv0/sample.csv]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Loaded 200 rows × 9 columns
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=300]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (300, 9), default_rate=44.33%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Split — train=240  test=60  pos_rate=44.17%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=100]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (100, 9), default_rate=44.00%
+2026-02-18 16:54:34 | INFO     | src.data.validation                 | Validating data  [100 rows × 9 cols]
+2026-02-18 16:54:34 | INFO     | src.data.validation                 | Validation passed.
+2026-02-18 16:54:34 | INFO     | src.data.validation                 | Validating data  [1 rows × 2 cols]
+2026-02-18 16:54:34 | ERROR    | src.data.validation                 | Validation failed — 1 error(s)
+2026-02-18 16:54:34 | ERROR    | src.data.validation                 |   ERROR   | Missing required columns: ['age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'employment_type']
+2026-02-18 16:54:34 | WARNING  | src.data.validation                 |   WARNING | Severe class imbalance: positive_rate=0.00%. Consider SMOTE, class_weight='balanced', or resampling.
+2026-02-18 16:54:34 | INFO     | src.data.validation                 | Validating data  [240 rows × 8 cols]
+2026-02-18 16:54:34 | INFO     | src.data.validation                 | Validation passed.
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (240, 21), test shape:  (60, 21)
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (240, 21), test shape:  (60, 21)
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (240, 21), test shape:  (60, 21)
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor saved ➜ /private/var/folders/_w/7d2ym6213tn9xpxkkm2nrywr0000gn/T/pytest-of-eolaw/pytest-1/test_save_and_load0/preprocessor_test.pkl
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /private/var/folders/_w/7d2ym6213tn9xpxkkm2nrywr0000gn/T/pytest-of-eolaw/pytest-1/test_save_and_load0/preprocessor_test.pkl
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Generating synthetic loan dataset  [n=500]
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Synthetic dataset ready — (500, 9), default_rate=41.40%
+2026-02-18 16:54:34 | INFO     | src.data.ingestion                  | Split — train=400  test=100  pos_rate=41.50%
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Running feature engineering on training data …
+2026-02-18 16:54:34 | INFO     | src.features.feature_engineering    | Feature engineering complete — 6 new columns: ['loan_to_income', 'income_per_account', 'credit_tier', 'age_bracket', 'high_risk_flag', 'employment_stability']
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Fitting preprocessing pipeline …
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Pipeline — numeric=['income', 'age', 'loan_amount', 'credit_score', 'employment_years', 'debt_ratio', 'num_accounts', 'loan_to_income', 'income_per_account', 'high_risk_flag', 'employment_stability'], categorical=['employment_type', 'credit_tier', 'age_bracket']
+2026-02-18 16:54:34 | INFO     | src.data.preprocessing              | Preprocessing complete — train shape: (400, 21), test shape:  (100, 21)
+2026-02-18 16:54:34 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:34 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:36 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:36 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:36 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:36 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:36 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:36 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:37 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:37 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:37 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:37 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:37 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:37 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:39 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:39 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:39 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:39 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:39 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:39 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:41 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:41 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:41 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:41 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:41 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:41 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:43 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:43 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:43 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:43 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:43 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:43 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:44 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:44 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:44 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:44 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:44 | INFO     | src.models.evaluate                 | Evaluating model: model  [100 samples]
+2026-02-18 16:54:44 | INFO     | src.models.evaluate                 | model results — accuracy=0.5800  precision=0.6077  recall=0.5800  f1=0.5824  roc_auc=0.6618
+2026-02-18 16:54:44 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:44 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:46 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:46 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:46 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:46 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:46 | INFO     | src.models.evaluate                 | Evaluating model: model  [100 samples]
+2026-02-18 16:54:46 | INFO     | src.models.evaluate                 | model results — accuracy=0.5800  precision=0.6077  recall=0.5800  f1=0.5824  roc_auc=0.6618
+2026-02-18 16:54:46 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:46 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:48 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:48 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:48 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:48 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:48 | INFO     | src.models.evaluate                 | Evaluating model: model  [100 samples]
+2026-02-18 16:54:48 | INFO     | src.models.evaluate                 | model results — accuracy=0.5800  precision=0.6077  recall=0.5800  f1=0.5824  roc_auc=0.6618
+2026-02-18 16:54:48 | INFO     | src.models.train                    | Starting model training — 2 candidates, CV=5, scoring='f1'
+2026-02-18 16:54:48 | INFO     | src.models.train                    |   Training: RandomForest …
+2026-02-18 16:54:50 | INFO     | src.models.train                    |   RandomForest — best_cv_f1=0.3910 (std=0.0341) | best_params={'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}
+2026-02-18 16:54:50 | INFO     | src.models.train                    |   Training: LogisticRegression …
+2026-02-18 16:54:50 | INFO     | src.models.train                    |   LogisticRegression — best_cv_f1=0.5073 (std=0.0316) | best_params={'C': 10.0}
+2026-02-18 16:54:50 | INFO     | src.models.train                    | Best model selected: LogisticRegression  (cv_f1=0.5073)
+2026-02-18 16:54:50 | INFO     | src.models.evaluate                 | Evaluating model: LogisticRegression  [100 samples]
+2026-02-18 16:54:50 | INFO     | src.models.evaluate                 | LogisticRegression results — accuracy=0.5800  precision=0.6077  recall=0.5800  f1=0.5824  roc_auc=0.6618
+2026-02-18 16:54:50 | INFO     | src.models.evaluate                 | Evaluating model: RandomForest  [100 samples]
+2026-02-18 16:54:50 | INFO     | src.models.evaluate                 | RandomForest results — accuracy=0.5700  precision=0.5653  recall=0.5700  f1=0.5672  roc_auc=0.5577
+2026-02-18 17:04:05 | INFO     | src.models.predict                  | Loading model artifacts …
+2026-02-18 17:04:05 | INFO     | src.models.registry                 | Model loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/model_v1.pkl
+2026-02-18 17:04:05 | INFO     | src.data.preprocessing              | Preprocessor loaded ← /Users/eolaw/Desktop/ml-pipeline-deployment-system/models/preprocessor_v1.pkl
+2026-02-18 17:04:05 | INFO     | src.models.predict                  | Predictor ready.
+2026-02-18 17:04:05 | INFO     | src.monitoring.performance          | Inference — prediction=0  probability=0.3490  latency=9.61ms  total_requests=1
+2026-02-18 17:04:05 | INFO     | src.monitoring.performance          | Inference — prediction=1  probability=0.6553  latency=2.41ms  total_requests=2
+2026-02-18 17:04:05 | WARNING  | src.monitoring.performance          | DRIFT ALERT: positive_rate shifted by 20.00% (current=50.00%, reference=30.00%)

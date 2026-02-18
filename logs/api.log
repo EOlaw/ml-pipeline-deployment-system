@@ -1,0 +1,87 @@
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  GET /health  content_type=None
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE GET /health  status=503  latency=0.1ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  GET /health  content_type=None
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE GET /health  status=503  latency=0.06ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=4.37ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=3.23ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=2.83ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=2.81ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:53:54 | WARNING  | src.api.app                         | Validation error: [{'type': 'missing', 'loc': ('income',), 'msg': 'Field required', 'input': {'age': 35, 'loan_amount': 15000, 'credit_score': 720, 'employment_years': 5.0, 'debt_ratio': 0.25, 'num_accounts': 3, 'employment_type': 'full_time'}}]
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE POST /predict  status=422  latency=0.12ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:53:54 | WARNING  | src.api.app                         | Validation error: [{'type': 'value_error', 'loc': ('employment_type',), 'msg': "Value error, employment_type must be one of {'full_time', 'self_employed', 'part_time'}", 'input': 'unemployed', 'ctx': {'error': ValueError("employment_type must be one of {'full_time', 'self_employed', 'part_time'}")}}]
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:53:54 | WARNING  | src.api.app                         | Validation error: [{'type': 'greater_than_equal', 'loc': ('credit_score',), 'msg': 'Input should be greater than or equal to 300', 'input': 100, 'ctx': {'ge': 300}}]
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE POST /predict  status=422  latency=0.14ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=text/plain
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE POST /predict  status=400  latency=0.05ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=3.44ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  GET /metrics  content_type=None
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE GET /metrics  status=200  latency=22.54ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  GET /metrics  content_type=None
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE GET /metrics  status=200  latency=0.1ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  GET /info  content_type=None
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE GET /info  status=200  latency=0.69ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  GET /info  content_type=None
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE GET /info  status=200  latency=0.6ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  GET /nonexistent  content_type=None
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE GET /nonexistent  status=404  latency=0.06ms
+2026-02-18 16:53:54 | INFO     | src.api.app                         | REQUEST  GET /predict  content_type=None
+2026-02-18 16:53:54 | INFO     | src.api.app                         | RESPONSE GET /predict  status=405  latency=0.05ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  GET /health  content_type=None
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE GET /health  status=503  latency=0.16ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  GET /health  content_type=None
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE GET /health  status=503  latency=0.07ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=5.67ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=3.5ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=3.73ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=3.46ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:54:34 | WARNING  | src.api.app                         | Validation error: [{'type': 'missing', 'loc': ('income',), 'msg': 'Field required', 'input': {'age': 35, 'loan_amount': 15000, 'credit_score': 720, 'employment_years': 5.0, 'debt_ratio': 0.25, 'num_accounts': 3, 'employment_type': 'full_time'}}]
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=422  latency=0.24ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:54:34 | WARNING  | src.api.app                         | Validation error: [{'type': 'value_error', 'loc': ('employment_type',), 'msg': "Value error, employment_type must be one of {'part_time', 'full_time', 'self_employed'}", 'input': 'unemployed', 'ctx': '{\'error\': ValueError("employment_type must be one of {\'part_time\', \'full_time\', \'self_employed\'}")}'}]
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=422  latency=0.12ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:54:34 | WARNING  | src.api.app                         | Validation error: [{'type': 'greater_than_equal', 'loc': ('credit_score',), 'msg': 'Input should be greater than or equal to 300', 'input': 100, 'ctx': "{'ge': 300}"}]
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=422  latency=0.1ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=text/plain
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=400  latency=0.05ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=4.63ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  GET /metrics  content_type=None
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE GET /metrics  status=200  latency=6.06ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  GET /metrics  content_type=None
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE GET /metrics  status=200  latency=0.12ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  GET /info  content_type=None
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE GET /info  status=200  latency=0.74ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  GET /info  content_type=None
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE GET /info  status=200  latency=0.61ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  GET /nonexistent  content_type=None
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE GET /nonexistent  status=404  latency=0.05ms
+2026-02-18 16:54:34 | INFO     | src.api.app                         | REQUEST  GET /predict  content_type=None
+2026-02-18 16:54:34 | INFO     | src.api.app                         | RESPONSE GET /predict  status=405  latency=0.05ms
+2026-02-18 17:01:44 | INFO     | __main__                            | Starting Flask dev server on 0.0.0.0:5000  debug=False
+2026-02-18 17:03:10 | INFO     | __main__                            | Starting Flask dev server on 0.0.0.0:5000  debug=False
+2026-02-18 17:03:27 | INFO     | __main__                            | Starting Flask dev server on 0.0.0.0:5000  debug=False
+2026-02-18 17:04:05 | INFO     | src.api.app                         | REQUEST  GET /health  content_type=None
+2026-02-18 17:04:05 | INFO     | src.api.app                         | RESPONSE GET /health  status=503  latency=0.16ms
+2026-02-18 17:04:05 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 17:04:05 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=12.18ms
+2026-02-18 17:04:05 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 17:04:05 | INFO     | src.api.app                         | RESPONSE POST /predict  status=200  latency=2.54ms
+2026-02-18 17:04:05 | INFO     | src.api.app                         | REQUEST  POST /predict  content_type=application/json
+2026-02-18 17:04:05 | WARNING  | src.api.app                         | Validation error: [{'type': 'missing', 'loc': ('age',), 'msg': 'Field required', 'input': {'income': 50000}}, {'type': 'missing', 'loc': ('loan_amount',), 'msg': 'Field required', 'input': {'income': 50000}}, {'type': 'missing', 'loc': ('credit_score',), 'msg': 'Field required', 'input': {'income': 50000}}, {'type': 'missing', 'loc': ('employment_years',), 'msg': 'Field required', 'input': {'income': 50000}}, {'type': 'missing', 'loc': ('debt_ratio',), 'msg': 'Field required', 'input': {'income': 50000}}, {'type': 'missing', 'loc': ('num_accounts',), 'msg': 'Field required', 'input': {'income': 50000}}, {'type': 'missing', 'loc': ('employment_type',), 'msg': 'Field required', 'input': {'income': 50000}}]
+2026-02-18 17:04:05 | INFO     | src.api.app                         | RESPONSE POST /predict  status=422  latency=0.41ms
+2026-02-18 17:04:05 | INFO     | src.api.app                         | REQUEST  GET /metrics  content_type=None
+2026-02-18 17:04:05 | INFO     | src.api.app                         | RESPONSE GET /metrics  status=200  latency=4.51ms

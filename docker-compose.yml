@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+  # ─── ML Inference API ──────────────────────────────────────────────────────
+  ml-api:
+    build:
+      context: .
+      target: app
+    container_name: ml-pipeline-api
+    image: ml-pipeline:latest
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env.example          # swap for .env in real deployment
+    environment:
+      - FLASK_DEBUG=false
+      - LOG_LEVEL=INFO
+      - MODEL_VERSION=v1
+    volumes:
+      - ./models:/app/models   # persist trained models
+      - ./logs:/app/logs       # persist logs
+      - ./data:/app/data       # persist data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - ml-network
+
+  # ─── Training Runner (one-shot service) ────────────────────────────────────
+  ml-trainer:
+    build:
+      context: .
+      target: app
+    container_name: ml-pipeline-trainer
+    image: ml-pipeline:latest
+    command: ["python", "run_pipeline.py"]
+    env_file:
+      - .env.example
+    volumes:
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ./data:/app/data
+    profiles:
+      - training              # only runs with: docker compose --profile training up
+    networks:
+      - ml-network
+
+networks:
+  ml-network:
+    driver: bridge

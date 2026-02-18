@@ -1,0 +1,34 @@
+{
+  "model_version": "v1",
+  "model_name": "LogisticRegression",
+  "trained_at": "2026-02-18T22:54:34.316995+00:00",
+  "metrics": {
+    "model_name": "model",
+    "n_samples": 120,
+    "accuracy": 0.5583,
+    "precision": 0.5543,
+    "recall": 0.5583,
+    "f1": 0.5553,
+    "roc_auc": 0.5562,
+    "confusion_matrix": [
+      [
+        43,
+        24
+      ],
+      [
+        29,
+        24
+      ]
+    ],
+    "positive_rate_actual": 0.4417,
+    "positive_rate_predicted": 0.4
+  },
+  "cv_score": 0.5109,
+  "best_params": {
+    "C": 10.0
+  },
+  "feature_count": 21,
+  "training_samples": 480,
+  "model_file": "model_v1.pkl",
+  "preprocessor_file": "preprocessor_v1.pkl"
+}
